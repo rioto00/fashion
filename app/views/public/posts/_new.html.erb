@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      
+      <h3>投稿</h3>
+      
+      <%= form_with model: @post, local: true do |form| %>
+      
+        <p><%= form.file_field :image %></p>
+        <p><%= form.file_field :image %></p>
+        <p><%= form.file_field :image %></p>
+        <p><%= form.file_field :image %></p>
+        <p><%= form.file_field :image %></p>
+      
+        <p>
+          <%= form.label :タイトル %><br>
+          <%= form.text_field :title %> 
+        </p>
+        
+        <p>
+          <%= form.label :内容 %><br>
+          <%= form.text_area :content %>
+        </p>
+        
+        <p><%= form.submit %></p>
+          
+      <% end %>
+      
+   </div>
+  </div>
+</div>

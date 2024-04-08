@@ -8,7 +8,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   protected
   
   def after_sign_up_path_for(resource)
-    customers_my_page_path
+    user_users_mypage_path
   end
   
   def configure_permitted_parameters

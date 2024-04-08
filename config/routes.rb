@@ -7,19 +7,13 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-  #管理者側
-  namespace :admin do
-    #get '/admin', to: 'admin#users#index'
-    resources :genres, except: [:show]
-    resources :users, only: [:index, :show, :destroy]
-  end
-
   #ユーザー側
-  scope module: :public do
+ scope module: :public do
     root to: "homes#top"
     get '/about', to: 'users#index'
     get 'user/users/mypage', to: 'users#mypage'
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] 
+    post 'user/users/mypage', to: 'users#mypage'
     resources :posts, except: [:edit, :update]
     resources :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
@@ -27,7 +21,13 @@ Rails.application.routes.draw do
     get '/relationships/followings', to: 'relationships#followings'
     get '/relationships/followers', to: 'relationships#followers'
   end
-  
-  get '/admin', to: redirect('/admin/users')
 
+
+  # 管理者側
+  namespace :admin do
+    resources :genres, except: [:show]
+    resources :users, only: [:index, :show, :destroy]
+  end
+
+  get '/admin', to: redirect('/admin/users')
 end
