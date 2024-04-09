@@ -10,7 +10,7 @@
               <td class="col-md-4">
                 <div class="d-flex justify-content-center flex-column align-items-center">
                   <!-- アイコン画像 -->
-                  <%= image_tag @user.get_profile_image(200, 200), class: "img-fluid rounded-circle mb-3" %>
+                  <%= image_tag @user.get_profile_image(200, 200), class: "img-fluid rounded mb-3" %>
                   <!-- ファイル選択 -->
                   <%= form.file_field :profile_image, id: "profile_image", accept: "image/*" %>
                 </div>
@@ -30,13 +30,13 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-12">
+                  <div class="col-md-12">
                     <label for="introduction" class="form-label">紹介文</label>
                     <%= form.text_area :introduction, id: "introduction", class: "form-control", rows: 4, cols: 50 %>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-12 mt-1">
+                  <div class="col-md-12 mt-1">
                     <%= form.submit "編集を保存", class: "btn btn-primary" %>
                   </div>
                 </div>

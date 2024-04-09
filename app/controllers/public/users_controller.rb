@@ -2,6 +2,8 @@ class Public::UsersController < ApplicationController
   
   def mypage
     @user = current_user
+    @post = current_user
+    @post_new = Post.new
   end
 
   def edit
@@ -26,10 +28,17 @@ class Public::UsersController < ApplicationController
   def get_profile_image
   end
   
+  def get_post_image
+  end
+  
   private
   
   def user_params
     params.require(:user).permit(:name, :gender, :introduction, :profile_image)
+  end
+  
+  def post_params 
+    params.require(:post).permit(:title, :content) 
   end
   
 end
