@@ -2,7 +2,7 @@ class Public::PostsController < ApplicationController
   
   def new
     @post_new = Post.new
-    @posts = Post.all
+    @user = current_user
   end
 
   def index
@@ -32,7 +32,7 @@ class Public::PostsController < ApplicationController
   
   private
   def post_params 
-    params.require(:post).permit(:title, :content, :post_image) 
+    params.require(:post).permit(:title, :content, :genre_id, :post_image, :post_image1, :post_image2, :post_image3, :post_image4) 
   end
   
 end
