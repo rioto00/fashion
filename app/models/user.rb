@@ -14,23 +14,31 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   
+  # belongs_to :follower, class_name: "User"
+  # belongs_to :followed, class_name: "User"
+  
+  def follow(user)
+    active_relationships.create(followed_id: user.id)
+  end
+  
+  # 指定したユーザーのフォローを解除する
+  def unfollow(user)
+    active_relationships.find_by(followed_id: user.id).destroy
+  end
+  
+  # 指定したユーザーをフォローしているかどうかを判定
+  def following?(user)
+    followings.include?(user)
+  end
+  
   has_one_attached :profile_image
   
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      profile_image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-      profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image.variant(resize_to_limit: [width, height]).processed
   end
-  
-  has_one_attached :post_image
-  
-  def get_post_image(width, height)
-    unless post_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      post_image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpg')
-    end
-      post_image.variant(resize_to_limit: [width, height]).processed
-  end
+ 
 end

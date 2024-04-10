@@ -1,24 +1,33 @@
 <div class="container my-5">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-12">
       
       <h1>投稿一覧</h1>
       
-        <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <%= render partial: 'public/homes/genre', genres: @genres %>
+          <%= render partial: 'public/homes/sex' %>
+        </div>
+        
+        <div class="col-md-9">
           <div class="row">
-            <div class="col-md-3">
-              <%= render partial: 'public/homes/genre', genres: @genres %>
-            </div>
-            
-            <table>
-              <% @posts.each do |post| %>
-                <tr>  
-                  <td class="card" style="width: 13rem;"><%= image_tag post.user.get_profile_image(200,200) %>
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">content</p>
-                  </td>
-                </tr>
-              <% end %>
-            </table>
+            <% @posts.each do |post| %>
+              <div class="col-4 my-2">
+                <div class="card" style="width: 15rem;">
+                  <%= image_tag post.get_post_image(200,200) %>
+                  <div class="card-body">
+                    <h5 class="card-name"><%= link_to post.user.name, user_path(post.user_id) %></h5>
+                    <p class="card-content"><%= link_to post.content, user_path(post.id) %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
   </div>
 </div>

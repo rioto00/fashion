@@ -18,7 +18,7 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       flash[:notice] = "投稿が成功しました。"
-      redirect_to root_path(@post.id)
+      redirect_to root_path
     else
       render :mypage
     end
@@ -32,7 +32,7 @@ class Public::PostsController < ApplicationController
   
   private
   def post_params 
-    params.require(:post).permit(:title, :content) 
+    params.require(:post).permit(:title, :content, :post_image) 
   end
   
 end

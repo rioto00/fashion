@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
     resources :relationships, only: [:create, :destroy]
-    get '/relationships/followings', to: 'relationships#followings'
-    get '/relationships/followers', to: 'relationships#followers'
+      get '/relationships/followings', to: 'relationships#followings'
+      get '/relationships/followers', to: 'relationships#followers'
     get "/search" => "items#search"
   end
 

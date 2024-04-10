@@ -1,0 +1,22 @@
+
+<%= form_with url: search_path, method: :get do |f| %>
+  <table class="table table-borderless ml-2 ">
+    <thead class="thead-light">
+      <tr>
+        <th>ジャンル</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= link_to "men", search_path(gender: "men") %></td>
+      </tr>
+      <tr>
+        <td><%= link_to "women", search_path(gender: "women") %></td>
+      </tr>
+      <tr>
+        <td><%= link_to "other", search_path(gender: "other") %></td>
+      </tr>
+    </tbody>
+    </table>
+<% end %>
