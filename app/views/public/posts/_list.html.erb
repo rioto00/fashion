@@ -1,0 +1,9 @@
+<% @posts.each do |post| %>
+  <div class="card" style="width: 15rem;">
+    <%= image_tag post.get_post_image(200,200) %>
+    <div class="card-body">
+      <h5 class="card-name"><%= link_to post.user.name, user_path(post.user_id) %></h5>
+      <p class="card-content"><%= link_to post.content, user_path(post.id) %></p>
+    </div>
+  </div>
+<% end %>

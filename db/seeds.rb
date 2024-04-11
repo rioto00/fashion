@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+initial_genres = [
+  {name: "tops"},
+  {name: "outer"},
+  {name: "bottom"},
+  {name: "Skirts"},
+  {name: "Sweaters"},
+  {name: "Jackets"},
+  {name: "item"},
+]
+Genre.create(initial_genres)
+
+Admin.create!(
+   email: 'admin@admin',
+   password: 'admin1',
+   password_confirmation: "admin1"
+)

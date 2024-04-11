@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
   #ユーザー側
@@ -31,5 +31,5 @@ Rails.application.routes.draw do
     get "/search" => "items#search"
   end
 
-  get '/admin', to: redirect('/admin/users')
+  get '/admin', to: redirect('/admin/sign_in')
 end

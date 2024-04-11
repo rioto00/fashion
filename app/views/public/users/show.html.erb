@@ -1,2 +1,6 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<% if @user.posts.any? %>
+  <% @user.posts.each do |post| %>
+    <%= image_tag post.get_post_image(200, 200), class: "img-fluid rounded mb-3" %>
+    <p>ジャンルID: <%= post.genre_id %></p>
+  <% end %>
+<% end %>

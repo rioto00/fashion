@@ -27,12 +27,12 @@ class Public::PostsController < ApplicationController
   def destroy
   end
   
-  def get_post_image
-  end
+
+
   
   private
   def post_params 
-    params.require(:post).permit(:title, :content, :genre_id, :post_image, :post_image1, :post_image2, :post_image3, :post_image4) 
+    params.require(:post).permit(:title, :content, :genre_id, :post_image, post_images: []) 
   end
   
 end
