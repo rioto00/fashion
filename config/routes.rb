@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   #ユーザー側
  scope module: :public do
     root to: "homes#top"
-    get '/about', to: 'users#index'
+    get '/about' => "homes#about", as: 'about'
     get 'user/users/mypage', to: 'users#mypage'
     resources :users, only: [:show, :edit, :update] 
     post 'user/users/mypage', to: 'users#mypage'
