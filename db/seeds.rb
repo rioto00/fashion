@@ -8,13 +8,13 @@
 
 
 initial_genres = [
-  {name: "tops"},
-  {name: "outer"},
-  {name: "bottom"},
-  {name: "Skirts"},
-  {name: "Sweaters"},
-  {name: "Jackets"},
-  {name: "item"},
+  {name: "カジュアル"},
+  {name: "フォーマル"},
+  {name: "ストリート"},
+  {name: "ヴィンテージ"},
+  {name: "テック"},
+  {name: "Y2K"},
+  {name: "エスニック"},
 ]
 Genre.create(initial_genres)
 

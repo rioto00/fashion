@@ -11,24 +11,31 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = current_user
+    @post_new = Post.new
+    @comment = Comment.new
   end
 
   def create
+    @posts = Post.all
+    @user = current_user
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
       flash[:notice] = "投稿が成功しました。"
       redirect_to root_path
     else
-      render :mypage
+      flash.now[:alert] = "投稿に失敗しました。"
+      @posts = Post.all
+      @post_new = Post.new
+      #@post = Post.find(params[:id])
+      render 'public/users/mypage'
     end
   end
 
   def destroy
   end
   
-
-
   
   private
   def post_params 

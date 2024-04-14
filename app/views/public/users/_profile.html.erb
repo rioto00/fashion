@@ -4,52 +4,61 @@
       
       <h3>プロフィール</h3>
       
-      
+      <% if @user %>
         <%= form_with model: @user, url: user_path(@user.id) do |form| %>
-          <table class="table table-borderless">
-            <% user = @user %>
-            <tr>
-              <th>follows</th>
-              <th><%= link_to user.following.count, relationships_followings_path(user) %></th><th>followers</th>
-              <th><%= link_to user.followers.count, relationships_followers_path(user) %></th>
-            </tr>
-              <td class="col-md-4">
-                <div class="d-flex justify-content-center flex-column align-items-center">
-                  <!-- アイコン画像 -->
-                  <%= image_tag @user.get_profile_image(200, 200), class: "img-fluid rounded mb-3" %>
-                  <!-- ファイル選択 -->
-                  <%= form.file_field :profile_image, id: "profile_image", accept: "image/*" %>
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <div class="d-flex justify-content-center flex-column align-items-center">
+                <!-- アイコン画像 -->
+                <%= image_tag @user.get_profile_image(200, 200), class: "img-fluid rounded mb-3 mt-5" %>
+                <!-- ファイル選択 -->
+                <%= form.file_field :profile_image, id: "profile_image", accept: "image/*" %>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <!-- フォロー数とフォロワー数 -->
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label>follows</label>
+                  <%= link_to @user.following.count, relationships_followings_path(@user) %>
                 </div>
-              </td>
-              <td>
-                <div class="row">
+                <div class="col-md-6">
+                  <label>followers</label>
+                  <%= link_to @user.followers.count, relationships_followers_path(@user) %>
+                </div>
+              </div>
+              <!-- 名前 -->
+              <% if current_user %>
+                <div class="row mb-3">
                   <div class="col-md-9">
-                    <!-- ログイン時の名前を表示 -->
-                    <% if current_user %>
-                      <label for="name" class="form-label">Name</label>
-                      <%= form.text_field :name, id: "name", class: "form-control" %>
-                    <% end %>
+                    <label for="name" class="form-label">Name</label>
+                    <%= form.text_field :name, id: "name", class: "form-control" %>
                   </div>
                   <div class="col-md-3">
                     <label for="gender" class="form-label">性別</label>
                     <%= form.select :gender, ["man", "woman", "other"], { prompt: "選択してください" }, class: "form-select" %>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <label for="introduction" class="form-label">紹介文</label>
-                    <%= form.text_area :introduction, id: "introduction", class: "form-control", rows: 4, cols: 50 %>
-                  </div>
+              <% end %>
+              <!-- 紹介文 -->
+              <div class="row mb-3">
+                <div class="col-md-12">
+                  <label for="introduction" class="form-label">紹介文</label>
+                  <%= form.text_area :introduction, rows: 2, id: "introduction", class: "form-control", rows: 4, cols: 50 %>
                 </div>
-                <div class="row">
-                  <div class="col-md-12 mt-1">
-                    <%= form.submit "編集を保存", class: "btn btn-primary" %>
-                  </div>
+              </div>
+              <!-- 保存ボタン -->
+              <div class="row">
+                <div class="col-md-12 mt-1">
+                  <%= form.submit "編集を保存", class: "btn btn-primary" %>
                 </div>
-              </td>
-            </tr>
-          </table>
+              </div>
+            </div>
+          </div>
         <% end %>
+      <% else %>
+      <% end %>
+        
       
     </div>
   </div>

@@ -7,8 +7,8 @@ class User < ApplicationRecord
   enum gender:{man: 1, woman: 2, other: 3} 
   
   has_many :posts
-  has_many :comments
-  has_many :favorites
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed

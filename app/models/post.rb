@@ -3,8 +3,15 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :genre
   
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+   def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+   end
+  
   validates :title, presence: true
   validates :content, presence: true
+  validate :at_least_one_image_attached
   
   has_many_attached :post_images
   
@@ -38,6 +45,10 @@ class Post < ApplicationRecord
     errors.add(:post_images, "は#{MAX_POST_IMAGES}つまでしか添付できません") if post_images.size > MAX_POST_IMAGES
   end
   
-
+  def at_least_one_image_attached
+    if !post_image.attached?
+      errors.add(:post_image, "を添付してください")
+    end
+  end
   
 end
