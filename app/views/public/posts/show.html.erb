@@ -11,8 +11,8 @@
               <%= image_tag image.variant(resize: "150x150"), class: "img-fluid rounded mb-3" %>
             <% end %>
             
-           <!--リンク予定-->
-            <div><storong><%= @post.genre.name %></storong></div>
+            <!--リンク予定-->
+            <div><strong><%= @post.genre.name %></strong></div>
             <div><%= @post.content %></div>
           </div>
           
@@ -21,17 +21,19 @@
             <%= image_tag @post.get_post_image(600, 600), class: "img-fluid rounded mb-3" %>
             <div><strong><%= @post.title %></strong></div>
             <div class="d-flex align-items-center mb-3 mt-5">
-              <%= image_tag @user.get_profile_image(40, 40), class: "img-fluid rounded-circle me-3" %>
-              <h5><%= @post.user.name %></h5>
+              <% if @post.user.present? %>
+                <%= image_tag @post.user.get_profile_image(40, 40), class: "img-fluid rounded-circle me-3" %>
+                <h5><%= @post.user.name %></h5>
                 <div class="ms-3 offset-md-3">
-                  <div><strong>follows</strong>: <%= link_to @user.following.count, relationships_followings_path(@user) %></div>
-                  <div><strong>followers</strong>: <%= link_to @user.followers.count, relationships_followers_path(@user) %></div>
+                  <div><strong>follows</strong>: <%= link_to @post.user.following.count, relationships_followings_path(@post.user) %></div>
+                  <div><strong>followers</strong>: <%= link_to @post.user.followers.count, relationships_followers_path(@post.user) %></div>
                   <div><strong>favorites</strong>: <%= render "public/favorites/btn", post: @post_new %></div>
                 </div>
+              <% end %>
             </div>
             <div>コメント数： <%= @post.comments.count %></div>
-          <%= render "public/comments/form", post: @post, comment: @comment %>
-          <%= render "public/comments/index", post: @post %>
+            <%= render "public/comments/form", post: @post, comment: @comment %>
+            <%= render "public/comments/index", post: @post %>
           </div>
         </div>
       </div>
