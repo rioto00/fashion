@@ -7,23 +7,34 @@
       <div class="container">
         <div class="row">
           <div class="col-4">
+            <!--投稿サブ画像-->
             <% @post.post_images.each do |image| %>
               <%= image_tag image.variant(resize: "150x150"), class: "img-fluid rounded mb-3" %>
             <% end %>
             
-            <!--リンク予定-->
+            <!--ジャンル名　　リンク予定-->
             <div><strong><%= @post.genre.name %></strong></div>
+            <!--投稿内容-->
             <div><%= @post.content %></div>
           </div>
           
           
-          <div class="col-7 offset-md-1"> 
+          <div class="col-7 offset-md-1">
+            <!--投稿メイン画像-->
             <%= image_tag @post.get_post_image(600, 600), class: "img-fluid rounded mb-3" %>
+            <!--投稿タイトル-->
             <div><strong><%= @post.title %></strong></div>
             <div class="d-flex align-items-center mb-3 mt-5">
               <% if @post.user.present? %>
+            <!--アイコン画像-->
                 <%= image_tag @post.user.get_profile_image(40, 40), class: "img-fluid rounded-circle me-3" %>
-                <h5><%= @post.user.name %></h5>
+            <!--ユーザー名-->
+                  <% if current_user != @post.user %>
+                    <h5><%= link_to @post.user.name, user_path(@post.user) %></h5>
+                  <% else %>
+                    <h5><%= @post.user.name %></h5>
+                  <% end %>
+                  
                 <div class="ms-3 offset-md-3">
                   <div><strong>follows</strong>: <%= link_to @post.user.following.count, relationships_followings_path(@post.user) %></div>
                   <div><strong>followers</strong>: <%= link_to @post.user.followers.count, relationships_followers_path(@post.user) %></div>
@@ -31,9 +42,11 @@
                 </div>
               <% end %>
             </div>
+            
             <div>コメント数： <%= @post.comments.count %></div>
             <%= render "public/comments/form", post: @post, comment: @comment %>
             <%= render "public/comments/index", post: @post %>
+            
           </div>
         </div>
       </div>

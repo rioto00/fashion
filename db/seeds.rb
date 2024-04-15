@@ -6,98 +6,98 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-#管理者用
-initial_genres = [
-  {name: "カジュアル"},
-  {name: "フォーマル"},
-  {name: "ストリート"},
-  {name: "ヴィンテージ"},
-  {name: "テック"},
-  {name: "Y2K"},
-  {name: "エスニック"},
-]
-Genre.create(initial_genres)
+# #管理者用
+# initial_genres = [
+#   {name: "カジュアル"},
+#   {name: "フォーマル"},
+#   {name: "ストリート"},
+#   {name: "ヴィンテージ"},
+#   {name: "テック"},
+#   {name: "Y2K"},
+#   {name: "エスニック"},
+# ]
+# Genre.create(initial_genres)
 
-Admin.create!(
-   email: 'admin@admin',
-   password: 'admin1',
-   password_confirmation: "admin1"
-)
+# Admin.create!(
+#   email: 'admin@admin',
+#   password: 'admin1',
+#   password_confirmation: "admin1"
+# )
 
 #ユーザー用
 #アカウント
-initial_users = [
+User.create!( [
   {
     email: "user1@example.com",
-    encrypted_password: "password1",
+    password: "password1",
     name: "taroo",
-    gender: "1",
+    gender: "man",
     introduction: "SNS始めましたよろしくお願いします"
   },
   {
     email: "user2@example.com",
-    encrypted_password: "password2",
+    password: "password2",
     name: "hanakosan",
-    gender: "2",
+    gender: "woman",
     introduction: "ファッション好きです！よろしくお願いします！"
   },
   {
     email: "user3@example.com",
-    encrypted_password: "password3",
+    password: "password3",
     name: "yusuke",
-    gender: "3",
+    gender: "other",
     introduction: "最新のファッション情報を発信しています！"
   },
   {
     email: "user4@example.com",
-    encrypted_password: "password4",
+    password: "password4",
     name: "ayumi",
-    gender: "2",
+    gender: "woman",
     introduction: "トレンドに敏感なファッション好きです！"
   },
   {
     email: "user5@example.com",
-    encrypted_password: "password5",
+    password: "password5",
     name: "kenta",
-    gender: "3",
+    gender: "other",
     introduction: "洋服のコーディネートが得意です！"
   },
   {
     email: "user6@example.com",
-    encrypted_password: "password6",
+    password: "password6",
     name: "sakurasaku",
-    gender: "2",
+    gender: "woman",
     introduction: "おしゃれ大好き！一緒に楽しみましょう！"
   },
   {
     email: "user7@example.com",
-    encrypted_password: "password7",
+    password: "password7",
     name: "takumifire",
-    gender: "1",
+    gender: "man",
     introduction: "ファッションアイテムに詳しいです！"
   },
   {
     email: "user8@example.com",
-    encrypted_password: "password8",
+    password: "password8",
     name: "mai_xx",
-    gender: "2",
+    gender: "woman",
     introduction: "季節ごとのトレンドをチェックしています！"
   },
   {
     email: "user9@example.com",
-    encrypted_password: "password9",
+    password: "password9",
     name: "shokk",
-    gender: "3",
+    gender: "other",
     introduction: "ストリートファッションが好きです！"
   },
   {
     email: "user10@example.com",
-    encrypted_password: "password10",
+    password: "password10",
     name: "naomi428",
-    gender: "2",
+    gender: "woman",
     introduction: "ファッションブランドが大好きです！"
   }
-]
+])
 
 #投稿
 initial_posts = [

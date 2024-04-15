@@ -11,9 +11,9 @@
             <th>ID</th>
             <th>性別</th>
             <th>名前</th>
-            <th>投稿数</th>
-            <th>最終投稿日時</th>
-            <th>投稿一覧</th>
+            <th class="text-end">投稿数</th>
+            <th class="text-end">最終投稿日時</th>
+            <th class="text-end">投稿一覧</th>
           </tr>
         </thead>
         
@@ -23,19 +23,22 @@
               <td><%= user.id %></td>
               <td><%= user.gender %></td>
               <td><%= image_tag user.get_profile_image(40, 40), class: "img-fluid rounded-circle" %> <%= user.name %></td>
-              <td><%= user.posts.count %></td>
+              <td class="text-end"><%= user.posts.count %></td>
               <% if user.posts.present? %>
                 <% last_post = user.posts.last %>
-                <td><%= last_post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+                <td class="text-end"><%= last_post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
               <% else %>
-                <td>投稿はありません</td>
+                <td class="text-end">投稿はありません</td>
               <% end %>
-              <td><%= link_to "投稿一覧", admin_user_path(id: user.id), class: "btn btn-primary" %></td>  
+              <td class="text-end"><%= link_to "投稿一覧", admin_user_path(id: user.id), class: "btn btn-primary" %></td>  
             </tr>
           <% end %>
         </tbody>
         
       </table>
+      <div class="col-12 mx-auto">  
+        <%= paginate @user_page %>
+      </div>
     </div>
   </div>
 </div>
