@@ -41,13 +41,7 @@
               <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
             </li>
           <% end %>
-          <% if user_signed_in? || admin_signed_in? %>
-            <li class="nav-item">
-              <span class="nav-link text-white">
-                ようこそ、<%= current_user.name %>さん！
-              </span>
-            </li>
-          <% end %>
+
         </ul>
       </div>
     </div>

@@ -13,9 +13,8 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @post = Post.find(params[:id])
-    @posts = Post.all
-    # @post_new = Post.new
+    @posts = @user.posts 
+    @post_new = Post.new
   end
 
   def update

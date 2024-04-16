@@ -7,22 +7,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # #管理者用
-# initial_genres = [
-#   {name: "カジュアル"},
-#   {name: "フォーマル"},
-#   {name: "ストリート"},
-#   {name: "ヴィンテージ"},
-#   {name: "テック"},
-#   {name: "Y2K"},
-#   {name: "エスニック"},
-# ]
-# Genre.create(initial_genres)
+ initial_genres = [
+   {name: "カジュアル"},
+   {name: "フォーマル"},
+   {name: "ストリート"},
+   {name: "ヴィンテージ"},
+   {name: "テック"},
+   {name: "Y2K"},
+   {name: "エスニック"}, ]
+ Genre.create(initial_genres)
 
-# Admin.create!(
-#   email: 'admin@admin',
-#   password: 'admin1',
-#   password_confirmation: "admin1"
-# )
+ Admin.create!(   email: 'admin@admin',
+   password: 'admin1',
+   password_confirmation: "admin1"
+ )
 
 #ユーザー用
 #アカウント
@@ -100,9 +98,9 @@ User.create!( [
 ])
 
 #投稿
-initial_posts = [
+Post.create!( [
   {
     title: "春",
     content: "春に向けてコーディネートしました",
   }
-]
+])
