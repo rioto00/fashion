@@ -38,7 +38,7 @@
                 <div class="ms-3 offset-md-3">
                   <div><strong>フォロー</strong>: <%= @post.user.following.count %></div>
                   <div><strong>フォロワー</strong>: <%= @post.user.followers.count %></div>
-                  <div><strong>いいね</strong>: <%= render "public/favorites/btn", post: @post_new %></div>
+                  <div><strong>いいね</strong>: <%= render "public/favorites/btn", post: @post %></div>
                 </div>
               <% end %>
             </div>
