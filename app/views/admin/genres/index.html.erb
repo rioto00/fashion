@@ -1,41 +1,69 @@
-
-<div class="container col-11">
+<div class="container-fluid my-5">
   <h2 class="mt-5">ジャンル一覧・追加</h2>
 
-  <div class="row d-flex justify-content-between ml-2 col-9">
-    <%= form_with model: @genre_new, url: admin_genres_path, method: :post do |f| %>
-    <div class="d-flex">
-      <div class="form-group col">
-        <b><%= f.label :name, 'ジャンル名' %></b>
-      </div>
-      <div class="form-group col">
-        <%= f.text_field :name, placeholder:'ジャンル名' %>
-      </div>
-      <div class="form-group col">
-        <%= f.submit '新規登録',class:"btn btn-success" %>
-      </div>
-    </div>
+  
+    <div class="col-lg-12">
+      <%= form_with model: @genre_new, url: admin_genres_path, method: :post do |f| %>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">ジャンル名</span>
+          </div>
+          <%= f.text_field :name, placeholder:'ジャンル名', class: 'form-control' %>
+          <div class="input-group-append">
+            <%= f.submit '新規登録', class: "btn btn-success" %>
+          </div>
+        </div>
       <% end %>
-  </div>
-
-  <div class="col-4">
-    <table class="table ml-2">
-      <thead class="thead-light" >
-        <tr>
-          <th>ジャンル</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @genres.each do |genre| %>
-        <tr>
-          <td><%= genre.name %></td>
-          <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class:"btn btn-success" %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <div class="row justify-content-center">
     </div>
+
+    <div class="row">
+      <% @genres.each_slice(8) do |slice| %>
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-header bg-light">
+              <h5 class="card-title">ジャンル</h5>
+            </div>
+            <div class="card-body">
+              <% slice.each_with_index do |genre, index| %>
+                <% if index % 9 == 0 %>
+                  <div class="row">
+                <% end %>
+                <div class="col-12">
+                  <%= form_with(model: genre, url: admin_genre_path(genre), method: :patch) do |f| %>
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="input-group mb-3">
+                          <%= f.text_field :name, class: 'form-control', placeholder: 'ジャンル名' %>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="input-group-append justify-content-center">
+                          <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="input-group-append justify-content-center">
+                          <%= button_to '削除', admin_genre_path(genre), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger btn-block mb-2" %>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <% if (index + 1) % 9 == 0 || (index + 1) == slice.size %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="row">
+      <div class="col-12 mx-auto">  
+        <%= paginate @genre_page %>
+      </div>
+    </div>
+    
   </div>
 </div>
