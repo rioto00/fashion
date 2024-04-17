@@ -12,17 +12,23 @@
         
         <div class="col-md-9">
           <div class="row">
-            <% @posts.each do |post| %>
-              <div class="col-4 my-2">
-                <div class="card" style="width: 15rem;">
-                  <%= image_tag post.get_post_image(200,200) %>
-                  <div class="card-body">
-                    <h5 class="card-name"><%= link_to post.user.name, post_path(post.id) %></h5>
-                    <p class="card-content"><%= post.content %></p>
-                  </div>
+            
+          <% @posts.each do |post| %>
+            <div class="col-4 my-2">
+              <div class="card" style="width: 15rem;">
+                <div class="card-header">
+                  <%= image_tag post.user.get_profile_image(40, 40), class: "img-fluid rounded-circle me-3" %>
+                  <%= link_to post.user.name, post_path(post.id), class: "card-name" %>
+                </div>
+                <%= image_tag post.get_post_image(200,200) %>
+                <div class="card-body">
+                  <p class="card-content"><%= post.content %></p>
+                  <p class="card-text">投稿日時: <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></p>
                 </div>
               </div>
-            <% end %>
+            </div>
+          <% end %>
+            
           </div>
         </div>
         
