@@ -36,9 +36,9 @@
                   <% end %>
                   
                 <div class="ms-3 offset-md-3">
-                  <div><strong>follows</strong>: <%= link_to @post.user.following.count, relationships_followings_path(@post.user) %></div>
-                  <div><strong>followers</strong>: <%= link_to @post.user.followers.count, relationships_followers_path(@post.user) %></div>
-                  <div><strong>favorites</strong>: <%= render "public/favorites/btn", post: @post_new %></div>
+                  <div><strong>フォロー</strong>: <%= @post.user.following.count %></div>
+                  <div><strong>フォロワー</strong>: <%= @post.user.followers.count %></div>
+                  <div><strong>いいね</strong>: <%= render "public/favorites/btn", post: @post_new %></div>
                 </div>
               <% end %>
             </div>

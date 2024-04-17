@@ -20,11 +20,10 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resource :comments, only: [:create, :destroy]
     end
-    resources :comments, only: [:create, :destroy]
     resources :relationships, only: [:create, :destroy]
       get '/relationships/followings', to: 'relationships#followings'
       get '/relationships/followers', to: 'relationships#followers'
-    get "/search" => "items#search"
+    get '/search', to: 'homes#search', as: 'search'
   end
 
 
@@ -32,7 +31,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres, except: [:show]
     resources :users, only: [:index, :show, :destroy]
-    get "/search" => "items#search"
+    get "/search" => "homes#search"
   end
 
   get '/admin', to: redirect('/admin/sign_in')

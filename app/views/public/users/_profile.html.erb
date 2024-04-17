@@ -21,11 +21,11 @@
                 <!-- フォロー数とフォロワー数 -->
                 <div class="row mb-3">
                   <div class="col-md-6">
-                    <label>フォロー数</label>
+                    <label>フォロー</label>
                     <%= link_to @user.following.count, relationships_followings_path(@user) %>
                   </div>
                   <div class="col-md-6">
-                    <label>フォロワー数</label>
+                    <label>フォロワー</label>
                     <%= link_to @user.followers.count, relationships_followers_path(@user) %>
                   </div>
                 </div>
@@ -69,13 +69,14 @@
               <!-- フォロー数とフォロワー数 -->
               <div class="row mb-3">
                 <div class="col-md-6">
-                  <label>フォロー数</label>
+                  <label>フォロー</label>
                   <%= link_to @user.following.count, relationships_followings_path(@user) %>
                 </div>
                 <div class="col-md-6">
-                  <label>フォロワー数</label>
+                  <label>フォロワー</label>
                   <%= link_to @user.followers.count, relationships_followers_path(@user) %>
                 </div>
+                  <%= render partial: "public/relationships/btn", locals: { options: { class: "your-class" } } %>
               </div>
               <!-- 名前 -->
               <div class="row mb-3">

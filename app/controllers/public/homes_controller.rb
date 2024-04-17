@@ -7,10 +7,13 @@ class Public::HomesController < ApplicationController
   def about
   end
   
-#   def search
-#     @genres = Genre.all
-#     @genre_id = params[:genre_id]
-#     @posts_search = Post.where(genre_id: @genre_id).page(params[:page]).per(10)
-#   end
-end
+  def search
+    if params[:genre_id].present?
+      @genre = Genre.find(params[:genre_id])
+      @posts = @genre.posts 
+    else
+      @posts = Post.all 
+    end
+  end
 
+end
