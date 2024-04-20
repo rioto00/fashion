@@ -97,10 +97,4 @@ User.create!( [
   }
 ])
 
-#投稿
-Post.create!( [
-  {
-    title: "春",
-    content: "春に向けてコーディネートしました",
-  }
-])
+
