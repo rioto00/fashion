@@ -1,1 +1,13 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+
+body {
+  background-color: #ffffff;
+}
+
+.form {
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+}
