@@ -23,7 +23,6 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy]
       get '/relationships/followings', to: 'relationships#followings'
       get '/relationships/followers', to: 'relationships#followers'
-    get '/search', to: 'homes#search', as: 'search'
   end
 
 
@@ -31,9 +30,12 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres, except: [:show]
     resources :users, only: [:index, :show, :destroy]
-    get "/search" => "homes#search"
+    resources :comments, only: [:index, :destroy]
   end
 
   get '/admin', to: redirect('/admin/sign_in')
+  get "search" => "searches#search"
+  get "genre_search" => "searches#genre_search"
+  get "sex_search" => "searches#sex_search"
   
 end

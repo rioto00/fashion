@@ -1,21 +1,19 @@
-
-
-  <table class="table table-borderless ml-2 ">
-    <thead class="thead-light">
-      <tr>
-        <th>性別</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= link_to "men", root_path(gender: "men") %></td>
-      </tr>
-      <tr>
-        <td><%= link_to "women", root_path(gender: "women") %></td>
-      </tr>
-      <tr>
-        <td><%= link_to "other", root_path(gender: "other") %></td>
-      </tr>
-    </tbody>
-    </table>
+<table class="table table-borderless ml-2">
+  <thead class="thead-light">
+    <tr>
+      <th>性別</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= link_to "men", sex_search_path(gender: "men") %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "women", sex_search_path(gender: "women") %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "other", sex_search_path(gender: "other") %></td>
+    </tr>
+  </tbody>
+</table>
