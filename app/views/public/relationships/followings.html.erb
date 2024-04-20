@@ -1,6 +1,5 @@
-<<h2>Follow Users</h2>
-<% if @users.exists? %>
-  <%= render "/users/index", users: @users %>
-<% else %>
-  <p>ユーザーはいません</p>
+<h2>フォロー</h2>
+
+<% @user.followings.each do |followings| %>
+  <p><%= link_to followings.name, user_path(followings) %></p>
 <% end %>

@@ -22,11 +22,11 @@
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label>フォロー</label>
-                    <%= link_to @user.following.count, relationships_followings_path(@user) %>
+                    <%= link_to @user.followings.count, followings_user_relationships_path(@user) %>
                   </div>
                   <div class="col-md-6">
                     <label>フォロワー</label>
-                    <%= link_to @user.followers.count, relationships_followers_path(@user) %>
+                    <%= link_to @user.followers.count, followers_user_relationships_path(@user) %>
                   </div>
                 </div>
                 <!-- 名前 -->
@@ -70,11 +70,11 @@
               <div class="row mb-3">
                 <div class="col-md-6">
                   <label>フォロー</label>
-                  <%= link_to @user.following.count, relationships_followings_path(@user) %>
+                  <%= link_to @user.followings.count, followings_user_relationships_path(@user) %>
                 </div>
                 <div class="col-md-6">
                   <label>フォロワー</label>
-                  <%= link_to @user.followers.count, relationships_followers_path(@user) %>
+                  <%= link_to @user.followers.count, followers_user_relationships_path(@user) %>
                 </div>
                   <%= render partial: "public/relationships/btn", locals: { options: { class: "your-class" } } %>
               </div>
