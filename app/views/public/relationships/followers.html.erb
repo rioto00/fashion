@@ -1,5 +1,20 @@
-<h2>フォロワー</h2>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
 
-<% @user.followers.each do |follower| %>
-  <p><%= link_to follower.name, user_path(follower) %></p>
-<% end %>
+      <h3>フォロワー</h3>
+      
+      <% @user.followers.each do |follower| %>
+        <p><%= image_tag @user.get_profile_image(40, 40), class: "img-fluid rounded-circle" %><%= link_to follower.name, user_path(follower) %></p>
+        <p><%= follower.gender %></p> 
+        <p><%= follower.introduction %></p> 
+        <% if follower.followings.include?(@user) %> 
+          <p>フォローされています</p>
+        <% else %>
+          <p>フォローされていません</p>
+        <% end %>
+      <% end %>
+      
+    </div>
+  </div>
+</div>

@@ -14,6 +14,18 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   
+  #ゲストユーザー
+  GUEST_USER_EMAIL = "guest@example.com"
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = 'ゲストユーザー'
+    end
+  end
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
+  
 
   def follow(user)
     active_relationships.create(followed_id: user.id)
