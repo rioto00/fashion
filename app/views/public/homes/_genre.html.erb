@@ -1,13 +1,9 @@
+<h4 class="mt-5">ジャンル</h4>
 
-<div class="genre-list ml-2">
-  <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active">
-      ジャンル
-    </a>
-    <% @genres.each do |genre| %>
-      <%= link_to genre_search_path(genre_id: genre.id), class: "list-group-item list-group-item-action" do %>
-        <%= genre.name %>
-      <% end %>
-    <% end %>
-  </div>
+<div class="d-flex flex-column ml-2 mt-3">
+  <% @genres.each do |genre| %>
+    <div class="mb-3">
+      <%= link_to genre.name, genre_search_path(genre_id: genre.id), method: :get, class: "link2 ttl_line" %>
+    </div>
+  <% end %>
 </div>

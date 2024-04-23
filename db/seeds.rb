@@ -14,6 +14,12 @@
    {name: "ヴィンテージ"},
    {name: "テック"},
    {name: "Y2K"},
+   {name: "ゴシック"},
+   {name: "トラッド"},
+   {name: "グランジ"},
+   {name: "ミリタリー"},
+   {name: "モード"},
+   {name: "パンク"},
    {name: "エスニック"}, ]
  Genre.create(initial_genres)
 

@@ -7,49 +7,55 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="row" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           
          <% if user_signed_in? %>
             <%= render partial: 'layouts/serach' %>
           <% end %>
           
-          <%# if admin_signed_in? %>
-            <%#= render partial: 'layouts/serach' %>
-          <%# end %>
-          
           <% if admin_signed_in? %>
             <li class="nav-item">
-              <%= link_to "Comments", admin_comments_path, class: "nav-link" %> 
+                <%= link_to "Comments", admin_comments_path, class: "link mx-2" %> 
             </li>
             <li class="nav-item">
-              <%= link_to "Users", admin_users_path, class: "nav-link" %> 
+
+                <%= link_to "Users", admin_users_path, class: "link mx-2" %> 
             </li>
             <li class="nav-item">
-              <%= link_to "Genres", admin_genres_path, class: "nav-link" %> 
+
+                <%= link_to "Genres", admin_genres_path, class: "link mx-2" %> 
             </li>
             <li class="nav-item">
-              <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: "nav-link" %> 
+
+                <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: "link mx-2" %> 
             </li>
           <% elsif user_signed_in? %>
             <% if user_signed_in? || admin_signed_in? %>
-              <li class="nav-item">
-                <span class="nav-link text-white">ようこそ、<%= current_user.name %>さん！</span>
+              <li class="nav-item text-center">
+                <span class=" text-white">ようこそ、<%= current_user.name %>さん！</span>
               </li>
             <% end %>
             
-            <li class="nav-item">
-              <%= link_to "マイページ", user_users_mypage_path, class: "nav-link" %> 
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %> 
+            <% if user_signed_in? && !current_user.guest_user? %>
+              <li class="nav-item text-center">
+                <i class="fa-solid fa-caret-right mx-2" style="color:white;"></i>
+                <%= link_to "マイページ", user_users_mypage_path, class: "link text-center" %> 
+              </li>
+            <% end %>
+            
+            <li class="nav-item text-center">
+              <i class="fa-solid fa-caret-right mx-2" style= "color:white;" ></i>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link text-center" %> 
             </li>
           <% else %>
-            <!--<li class="nav-item">-->
-            <!--  <%#= link_to "About", about_path, class: "nav-link" %> -->
-            <!--</li>-->
-            <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+            <li class="col mt-3">
+              <i class="fa-solid fa-caret-right mr-3" style="color:white;"></i>
+              <%= link_to "sign up", new_user_registration_path, class: "link" %>
+            </li>
+            <li class="col mt-3">
+              <i class="fa-solid fa-caret-right mr-3" style="color:white;"></i>
+              <%= link_to "Log in", new_user_session_path, class: "link" %>
             </li>
           <% end %>
           
@@ -57,3 +63,4 @@
       </div>
     </div>
   </nav>
+</header>

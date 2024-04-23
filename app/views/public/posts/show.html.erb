@@ -38,16 +38,21 @@
                 <div class="ms-3 offset-md-3">
                   <div><strong>フォロー</strong>: <%= @post.user.followings.count %></div>
                   <div><strong>フォロワー</strong>: <%= @post.user.followers.count %></div>
-                  <div id="favorite_buttons_<%= @post.id %>" >
-                    <%= render "public/favorites/btn", post: @post %>
-                  </div>
+                  
+                  <% if user_signed_in? && !current_user.guest_user? %>
+                    <div id="favorite_buttons_<%= @post.id %>" >
+                      <%= render "public/favorites/btn", post: @post %>
+                    </div>
+                  <% end %>
                 </div>
               <% end %>
             </div>
             
-            <div>コメント数： <%= @post.comments.count %></div>
-            <%= render "public/comments/form", post: @post, comment: @comment %>
-            <%= render "public/comments/index", post: @post %>
+            <% if user_signed_in? && !current_user.guest_user? %>
+              <div>コメント数： <%= @post.comments.count %></div>
+              <%= render "public/comments/form", post: @post, comment: @comment %>
+              <%= render "public/comments/index", post: @post %>
+            <% end %>
             
           </div>
         </div>

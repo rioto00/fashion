@@ -2,13 +2,13 @@
   <div class="col-12">
     <%= form_with url: search_path, method: :get, class: "d-flex" do |form| %>
       <div class="col-6 mx-2">
-        <%= form.text_field :search, placeholder: "検索", class: "form-control me-2 flex-grow-1" %>
+        <%= form.text_field :search, placeholder: "検索", class: "form-control me-2 flex-grow-1 search_container" %>
       </div>
       <div class="col-3 mx-2">
-        <%= form.select :range, options_for_select([['User'], ['Post']]), {}, { class: "form-select me-2 flex-grow-0" } %>
+        <%= form.select :range, options_for_select([['User'], ['Post']]), {}, { class: "form-select me-2 flex-grow-0 search" } %>
       </div>
       <div class="col- mx-2">
-        <%= form.button type: "submit", class: "btn btn-secondary w-100" do %>
+        <%= form.button type: "submit", class: "btn btn-secondary w-100 search_container" do %>
           <i class="fas fa-search"></i>
         <% end %>
       </div>
