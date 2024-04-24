@@ -15,7 +15,8 @@ class Post < ApplicationRecord
   has_many_attached :post_images
   
   has_one_attached :post_image
-   
+  
+  validates :post_image, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] } 
   validates :post_images, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
   validate :validate_post_images_limit
 
