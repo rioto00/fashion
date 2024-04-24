@@ -1,14 +1,6 @@
 class SearchesController < ApplicationController
   before_action :authenticate_user!
   
-  def sex_search
-
-    @sex = Sex.find_by(name: params[:gender]) 
-    if @sex
-      @posts = @sex.uses.page(params[:page])
-    end
-  end
-  
   def genre_search
     @genre_id = params[:genre_id]
     @genre = Genre.find(@genre_id)

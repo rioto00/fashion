@@ -10,7 +10,6 @@ class Post < ApplicationRecord
    end
   
   validates :title, presence: true
-  validates :content, presence: true
   validate :at_least_one_image_attached
   
   has_many_attached :post_images
