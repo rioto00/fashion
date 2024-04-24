@@ -69,3 +69,5 @@ gem "net-imap"
 gem 'kaminari','~> 1.2.1'
 
 gem 'jquery-rails'
+
+gem 'activestorage-validator'
