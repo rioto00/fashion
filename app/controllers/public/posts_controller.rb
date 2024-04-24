@@ -32,9 +32,7 @@ class Public::PostsController < ApplicationController
       render 'public/users/mypage'
     end
   end
-
-  def destroy
-  end
+  
   
   
   private

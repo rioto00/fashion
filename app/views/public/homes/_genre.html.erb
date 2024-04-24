@@ -1,6 +1,6 @@
 <h4 class="mt-5">ジャンル</h4>
 
-<div class="d-flex flex-column ml-2 mt-3">
+<div class="d-flex flex-column ml-2 mt-3" style="max-height: 200px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;">
   <% @genres.each do |genre| %>
     <div class="mb-3">
       <%= link_to genre.name, genre_search_path(genre_id: genre.id), method: :get, class: "link2 ttl_line" %>
