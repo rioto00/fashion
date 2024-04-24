@@ -1,10 +1,11 @@
+
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
       
       <h3>投稿詳細</h3>
       
-      <div class="container">
+      <div class="container sub-container">
         <div class="row">
           <div class="col-4">
             <!--投稿サブ画像-->
@@ -13,29 +14,29 @@
             <% end %>
             
             <!--ジャンル名　　リンク予定-->
-            <div><strong><%= @post.genre.name %></strong></div>
+            <div class="genre-name"><strong><%= @post.genre.name %></strong></div>
             <!--投稿内容-->
-            <div><%= @post.content %></div>
+            <div class="post-content"><%= @post.content %></div>
           </div>
           
           
           <div class="col-7 offset-md-1">
             <!--投稿メイン画像-->
-            <%= image_tag @post.get_post_image(600, 600), class: "img-fluid rounded mb-3" %>
+            <%= image_tag @post.get_post_image(600, 600), class: "main-image img-fluid rounded mb-3" %>
             <!--投稿タイトル-->
-            <div><strong><%= @post.title %></strong></div>
-            <div class="d-flex align-items-center mb-3 mt-5">
+            <div class="post-title"><strong><%= @post.title %></strong></div>
+            <div class="d-flex align-items-center mb-3 mt-5 user-section">
               <% if @post.user.present? %>
-            <!--アイコン画像-->
-                <%= image_tag @post.user.get_profile_image(40, 40), class: "img-fluid rounded-circle me-3" %>
-            <!--ユーザー名-->
-                  <% if current_user != @post.user %>
-                    <h5><%= link_to @post.user.name, user_path(@post.user) %></h5>
-                  <% else %>
-                    <h5><%= @post.user.name %></h5>
-                  <% end %>
-                  
-                <div class="ms-3 offset-md-3">
+                <!--アイコン画像-->
+                <%= image_tag @post.user.get_profile_image(40, 40), class: "user-image img-fluid rounded-circle me-3" %>
+                <!--ユーザー名-->
+                <% if current_user != @post.user %>
+                  <h5 class="user-name"><%= link_to @post.user.name, user_path(@post.user) %></h5>
+                <% else %>
+                  <h5 class="user-name"><%= @post.user.name %></h5>
+                <% end %>
+                
+                <div class="ms-3 offset-md-3 follow-section">
                   <div><strong>フォロー</strong>: <%= @post.user.followings.count %></div>
                   <div><strong>フォロワー</strong>: <%= @post.user.followers.count %></div>
                   
@@ -49,9 +50,13 @@
             </div>
             
             <% if user_signed_in? && !current_user.guest_user? %>
-              <div>コメント数： <%= @post.comments.count %></div>
-              <%= render "public/comments/form", post: @post, comment: @comment %>
-              <%= render "public/comments/index", post: @post %>
+              <div class="comment-count">コメント数： <%= @post.comments.count %></div>
+              <div class="comment-form">
+                <%= render "public/comments/form", post: @post, comment: @comment %>
+              </div>
+              <div class="comment-list">
+                <%= render "public/comments/index", post: @post %>
+              </div>
             <% end %>
             
           </div>

@@ -26,7 +26,6 @@ border : 1px black solid;
 padding: 10px 20px;
 text-decoration:none;
 }
-
 .button:hover{
 color: white;
 background-color: black;
@@ -44,9 +43,8 @@ text-decoration:none;
   text-decoration: none; /* 下線を消去 */
   transition: color 0.3s; /* カラー変更のアニメーション */
 }
-
 .link2:hover {
-  color: #0056b3; /* ホバー時のカラー */
+  color: #0056b3;
 }
 
 // 検索窓
@@ -78,7 +76,6 @@ text-decoration:none;
   height: 2.5em;
   outline : none;
 }
-
 .search{
   box-sizing: border-box;
   border: 1px solid #999;
@@ -95,26 +92,57 @@ text-decoration:none;
   padding: 0.3em 0.5em;
   border-left: 10px double #C6C6C6;
 } 
-
 .one {
   position: fixed;
 }
-
+// フラッシュメッセージ
 .flash-message {
   border-radius: 5px;
   padding: 16px 24px;
   margin: 16px 0px;
   animation: fadeout-anim 3s linear forwards;
 }
- 
 .flash-message.notice {
   background-color: #bcdfff;
   color: #0067C0;
   border: solid 1px #0067C0;
 }
- 
 .flash-message.alert {
   background-color: #ffd4d1;
   color: #930403;
   border: solid 1px #930403;
 }
+
+// コメントバルーン
+.balloon{
+  position: relative;
+  padding: 20px;
+  background-color: #dcdcdc;
+  border: 2px solid 000;
+  border-radius: 10px;
+}
+.balloon::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: 20px;
+  top: -15px;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #000;
+  border-left: 15px solid transparent;
+}
+.balloon::after{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: 20px;
+  top: -12px;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #dcdcdc;
+  border-left: 15px solid transparent;
+}
+

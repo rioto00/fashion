@@ -1,13 +1,17 @@
 <% if post.comments.any? %>
   <div class="comments">
     <% post.comments.each do |comment| %>
-      <div class="comment">
-        <%= image_tag comment.user.get_profile_image(40, 40), class: "img-fluid rounded-circle me-3" %>
-        <div class="comment-details">
-          <p class="comment-author"><%= comment.user.name %></p>
-          <p class="comment-content"><%= comment.content %></p>
-          <p class="comment-time"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+      <div class="comment mb-3">
+        <div class="d-flex align-items-center">
+          <div class="me-3">
+            <%= image_tag comment.user.get_profile_image(50, 50), class: "img-fluid rounded-circle" %>
+          </div>
+          <div class="comment-details">
+            <p class="comment-author fw-bold mb-0"><%= comment.user.name %></p>
+            <p class="comment-time text-muted"><%= comment.created_at.strftime("%Y/%m/%d") %></p>
+          </div>
         </div>
+        <p class="comment-content balloon mb-0"><%= comment.content %></p>
       </div>
     <% end %>
   </div>

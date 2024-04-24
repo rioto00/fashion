@@ -1,20 +1,69 @@
 <div class="container mt-5">
+  <style>
+    /* CSSスタイル */
+    .follower-container {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #e1e8ed;
+    }
+
+    .follower-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    .follower-info {
+      flex: 1;
+    }
+
+    .follower-name {
+      font-weight: bold;
+      color: #1da1f2;
+      text-decoration: none;
+    }
+
+    .follower-gender {
+      color: #657786;
+    }
+
+    .follower-introduction {
+      color: #14171a;
+    }
+
+    .follower-follow-status {
+      color: #657786;
+      margin-top: 5px;
+      text-align: right;
+    }
+
+    .followed {
+      color: #1da1f2;
+    }
+  </style>
+
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
-
       <h3>フォロワー</h3>
-      
       <% @user.followers.each do |follower| %>
-        <p><%= image_tag @user.get_profile_image(40, 40), class: "img-fluid rounded-circle" %><%= link_to follower.name, user_path(follower) %></p>
-        <p><%= follower.gender %></p> 
-        <p><%= follower.introduction %></p> 
-        <% if follower.followings.include?(@user) %> 
-          <p>フォローされています</p>
-        <% else %>
-          <p>フォローされていません</p>
-        <% end %>
+      <div class="follower-container">
+        <%= image_tag @user.get_profile_image(50, 50), class: "follower-image" %>
+        <div class="follower-info">
+          <%= link_to follower.name, user_path(follower), class: "follower-name" %>
+          <p class="follower-gender"><%= follower.gender %></p>
+          <p class="follower-introduction"><%= follower.introduction %></p>
+          <p class="follower-follow-status">
+            <% if follower.followings.include?(@user) %>
+            <span class="followed">フォローされています</span>
+            <% else %>
+            フォローされていません
+            <% end %>
+          </p>
+        </div>
+      </div>
       <% end %>
-      
     </div>
   </div>
 </div>
