@@ -92,10 +92,10 @@ text-decoration:none;
   padding: 0.3em 0.5em;
   border-left: 10px double #C6C6C6;
 } 
-.one {
-  position: fixed;
-}
-// フラッシュメッセージ
+// .one {
+//   position: fixed;
+// }
+// // フラッシュメッセージ
 .flash-message {
   border-radius: 5px;
   padding: 16px 24px;
@@ -146,3 +146,41 @@ text-decoration:none;
   border-left: 15px solid transparent;
 }
 
+#name::placeholder,
+#title::placeholder,
+#content::placeholder,
+#introduction::placeholder {
+  color: #999;
+}
+
+
+.pagetop {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 15px;
+}
+.pagetop a {
+    display: block;
+    background-color: #ccc;
+    text-align: center;
+    color: #222;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 5px 10px;
+	filter:alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+.pagetop a:hover {
+    display: block;
+    background-color: #b2d1fb;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    text-decoration: none;
+    padding:5px 10px;
+	filter:alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}

@@ -15,7 +15,6 @@
               <%= image_tag image.variant(resize: "150x150"), class: "img-fluid rounded mb-3" %>
             <% end %>
             
-            <!--ジャンル名　　リンク予定-->
             <div class="genre-name"><strong><%= @post.genre.name %></strong></div>
             <!--投稿内容-->
             <div class="post-content"><%= @post.content %></div>
@@ -33,7 +32,7 @@
                 <%= image_tag @post.user.get_profile_image(40, 40), class: "user-image img-fluid rounded-circle me-3" %>
                 <!--ユーザー名-->
                 <% if current_user != @post.user %>
-                  <h5 class="user-name"><%= link_to @post.user.name, user_path(@post.user) %></h5>
+                  <h5 class="user-name"><%= link_to @post.user.name, user_path(@post.user), data: { "turbolinks" => false } %></h5>
                 <% else %>
                   <h5 class="user-name"><%= @post.user.name %></h5>
                 <% end %>

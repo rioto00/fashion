@@ -1,4 +1,4 @@
-<div class="container my-5" style="position: relative" >
+<div class="container my-5" >
   
   <div class="row justify-content-center">
     <div class="col-12 col-md-12">
@@ -10,20 +10,20 @@
           <%= render partial: 'public/users/users_genre', locals: { genre_id: @genre_id } %>
         </div>
         
-        <div class="col-md-9 offset-3">
+        <div class="col-md-9 ">
           <div class="row">
             
           
-            <% @posts.each do |post| %>
+          <% @posts.reverse_each do |post| %>
               <div class="col-4 my-2">
                 <div class="card" style="width: 15rem;">
                   <div class="card-header">
                     <%= image_tag post.user.get_profile_image(40, 40), class: "img-fluid rounded-circle me-3" %>
-                    <% if current_user %> <!-- ログインしている場合にリンクを表示 -->
-                      <%= link_to post.user.name, post_path(post.id), class: "card-name link2" %>
-                    <% else %> <!-- ログインしていない場合はリンクを表示しない -->
-                      <span class="card-name"><%= post.user.name %></span>
-                    <% end %>
+                      <% if current_user %> <!-- ログインしている場合にリンクを表示 -->
+                        <%= link_to post.user.name, post_path(post.id), class: "card-name link2" %>
+                      <% else %> <!-- ログインしていない場合はリンクを表示しない -->
+                        <span class="card-name"><%= post.user.name %></span>
+                      <% end %>
                   </div>
                   <%= image_tag post.get_post_image(200,200) %>
                   <div class="card-body">
@@ -32,13 +32,32 @@
                   </div>
                 </div>
               </div>
-            <% end %>
+          <% end %>
+
             
           </div>
         </div>
         
       </div>
-
+      
     </div>
+    <p class="pagetop"><a href="#wrap">▲</a></p>
   </div>
 </div>
+
+<script>
+$(document).ready(function() {
+  var pagetop = $('.pagetop');
+    $(window).scroll(function () {
+       if ($(this).scrollTop() > 100) {
+            pagetop.fadeIn();
+       } else {
+            pagetop.fadeOut();
+            }
+       });
+       pagetop.click(function () {
+           $('body, html').animate({ scrollTop: 0 }, 500);
+              return false;
+   });
+});
+</script>
