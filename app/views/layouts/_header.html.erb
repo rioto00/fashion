@@ -40,7 +40,7 @@
             <% if user_signed_in? && !current_user.guest_user? %>
               <li class="nav-item text-center">
                 <i class="fa-solid fa-caret-right mx-2" style="color:white;"></i>
-                <%= link_to "マイページ", user_users_mypage_path, class: "link text-center" %> 
+                <%= link_to "マイページ", user_users_mypage_path, data: { "turbolinks" => false }, class: "link text-center" %> 
               </li>
             <% end %>
             

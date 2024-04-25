@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
       
-      <h3>プロフィール</h3>
+      <h3>Profile</h3>
       
       <% if @user %>
       <!-- ログインユーザーの場合 -->
@@ -12,9 +12,9 @@
               <div class="col-md-4">
                 <div class="d-flex justify-content-center flex-column align-items-center">
                   <!-- アイコン画像 -->
-                  <%= image_tag @user.get_profile_image(200, 200), class: "img-fluid rounded mb-3 mt-5" %>
+                  <%= image_tag @user.get_profile_image(200, 200), class: "img-fluid rounded mb-3 mt-5", id: "previe-image" %>
                   <!-- ファイル選択 -->
-                  <%= form.file_field :profile_image, id: "profile_image", accept: "image/*" %>
+                  <div style="color:red">※'png''jpg'画像のみ</div><%= form.file_field :profile_image, id: "profile_image", accept: "image/*" %>
                 </div>
               </div>
               <div class="col-md-8">
@@ -22,29 +22,29 @@
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label>フォロー</label>
-                    <%= link_to @user.followings.count, followings_user_relationships_path(@user) %>
+                    <%= link_to @user.followings.count, followings_user_relationships_path(@user), class: "link2" %>
                   </div>
                   <div class="col-md-6">
                     <label>フォロワー</label>
-                    <%= link_to @user.followers.count, followers_user_relationships_path(@user) %>
+                    <%= link_to @user.followers.count, followers_user_relationships_path(@user), class: "link2" %>
                   </div>
                 </div>
                 <!-- 名前 -->
                 <div class="row mb-3">
                   <div class="col-md-9">
-                    <label for="name" class="form-label">名前</label>
-                    <%= form.text_field :name, id: "name", class: "form-control" %>
+                    <label for="name" class="form-label"></label>
+                    <%= form.text_field :name, id: "name", placeholder: "Name", class: "form-control" %>
                   </div>
                   <div class="col-md-3">
-                    <label for="gender" class="form-label">性別</label>
-                    <%= form.select :gender, ["man", "woman", "other"], { prompt: "選択してください" }, class: "form-select" %>
+                    <label for="gender" class="form-label"></label>
+                    <%= form.select :gender, ["man", "woman", "other"], { prompt: "Sex" }, class: "form-select" %>
                   </div>
                 </div>
                 <!-- 紹介文 -->
                 <div class="row mb-3">
                   <div class="col-md-12">
-                    <label for="introduction" class="form-label">紹介文</label>
-                    <%= form.text_area :introduction, rows: 2, id: "introduction", class: "form-control", rows: 4, cols: 50 %>
+                    <label for="introduction" class="form-label"></label>
+                    <%= form.text_area :introduction, rows: 2, id: "introduction", placeholder: "Bio", class: "form-control", rows: 4, cols: 50 %>
                   </div>
                 </div>
                 <!-- 保存ボタン -->
@@ -102,3 +102,18 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var input = document.getElementById('profile_image');
+  var preview = document.getElementById('previe-image');
+  input.addEventListener('change', function() {
+    var file = this.files[0];
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      preview.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+});
+</script>
