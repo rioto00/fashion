@@ -48,7 +48,7 @@
       <h3>フォロワー</h3>
       <% @user.followers.each do |follower| %>
       <div class="follower-container">
-        <%= image_tag @user.get_profile_image(50, 50), class: "follower-image" %>
+        <%= image_tag follower. get_profile_image(50, 50), class: "follower-image" %>
         <div class="follower-info">
           <%= link_to follower.name, user_path(follower), class: "follower-name" %>
           <p class="follower-gender"><%= follower.gender %></p>

@@ -50,7 +50,7 @@
       
       <% @user.followings.each do |followings| %>
       <div class="follower-container">
-        <%= image_tag @user.get_profile_image(50, 50), class: "follower-image" %>
+        <%= image_tag followings.get_profile_image(50, 50), class: "follower-image" %>
         <div class="follower-info">
           <%= link_to followings.name, user_path(followings), class: "follower-name" %></p>
           <p class="follower-gender"><%= followings.gender %></p> 

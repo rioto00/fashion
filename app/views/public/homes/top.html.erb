@@ -14,20 +14,25 @@
           <div class="row">
             <% @posts.reverse_each do |post| %>
               <div class="col-4 my-2">
-                <div class="card" style="width: 15rem;">
-                  <i class="fas fa-map-pin"></i>
-                  <div class="card-header">
-                    <%= image_tag post.user.get_profile_image(40, 40), class: "img-fluid rounded-circle me-3" %>
-                      <% if current_user %> <!-- ログインしている場合にリンクを表示 -->
-                        <%= link_to post.user.name, post_path(post.id), class: "card-name link2" %>
-                      <% else %> <!-- ログインしていない場合はリンクを表示しない -->
-                        <span class="card-name"><%= post.user.name %></span>
-                      <% end %>
-                  </div>
-                  <%= image_tag post.get_post_image(200,200) %>
-                  <div class="card-body">
-                    <p class="card-title"><%= post.title %></p>
-                    <p class="card-text"><%= post.created_at.strftime("%Y/%m/%d") %></p>
+                <div class="card-box">
+                  <div class="card" style="width: 15rem;">
+                    <i class="fas fa-map-pin"></i>
+                    <div class="card-header">
+                      <%= image_tag post.user.get_profile_image(40, 40), class: "img-fluid rounded-circle me-3" %>
+                        <% if current_user %>
+                          <%= link_to post.user.name, user_path(post.user), data: { "turbolinks" => false }, class: "card-name link2" %>
+                        <% else %> 
+                          <span class="card-name"><%= post.user.name %></span>
+                        <% end %>
+                    </div>
+                    
+                      <%= image_tag post.get_post_image(200,200) %>
+                    <%= link_to post_path(post.id) do %>
+                      <div class="card-body">
+                        <p class="card-title link2"><%= post.title %></p>
+                        <p class="card-text link2"><%= post.created_at.strftime("%Y/%m/%d") %></p>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
               </div>

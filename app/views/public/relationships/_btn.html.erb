@@ -6,14 +6,14 @@
       <% if defined?(guest_user) && guest_user %>
         <div><strong><%= @user.followings.count %></strong>:フォロー</div>
       <% else %>
-        <div><strong><%= link_to @user.followings.count, followings_user_relationships_path(@user), data: {"turbolinks" => false} %></strong>:フォロー</div>
+        <div><strong><%= link_to @user.followings.count, followings_user_relationships_path(@user), class: "link2", data: {"turbolinks" => false} %></strong>:フォロー</div>
       <% end %>
     </div>
     <div class="col-md-4">
       <% if defined?(guest_user) && guest_user %>
         <div><strong><%= @user.followers.count %></strong>:フォロワー</div>
       <% else %>
-        <div><strong><%= link_to @user.followers.count, followers_user_relationships_path(@user), data: {"turbolinks" => false} %></strong>:フォロワー</div>
+        <div><strong><%= link_to @user.followers.count, followers_user_relationships_path(@user), class: "link2", data: {"turbolinks" => false} %></strong>:フォロワー</div>
       <% end %>
     </div>
 

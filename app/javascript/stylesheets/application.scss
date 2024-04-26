@@ -170,3 +170,32 @@ text-decoration:none;
   border:solid 1px #333;
   background-color: #fff;
 }
+
+.card-box {
+  width: 200px;
+}
+
+.card-box .card {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.card-box .card p.image {
+  margin: -10px -10px 0;
+}
+
+.card-box .card p.image img {
+  vertical-align: top;
+}
+
+.card-box .card p.text {
+  margin: 10px 0 0;
+}
+
+/* マウスホバー時のエフェクト */
+.card-box .card:hover {
+  background-color: #f0f0f0; /* 背景色を変更 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* 影を表示 */
+}
