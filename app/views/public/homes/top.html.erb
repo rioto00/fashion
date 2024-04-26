@@ -17,6 +17,7 @@
           <% @posts.reverse_each do |post| %>
               <div class="col-4 my-2">
                 <div class="card" style="width: 15rem;">
+                  <i class="fas fa-map-pin"></i>
                   <div class="card-header">
                     <%= image_tag post.user.get_profile_image(40, 40), class: "img-fluid rounded-circle me-3" %>
                       <% if current_user %> <!-- ログインしている場合にリンクを表示 -->

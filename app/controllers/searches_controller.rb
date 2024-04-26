@@ -6,6 +6,13 @@ class SearchesController < ApplicationController
     @genre = Genre.find(@genre_id)
     @genres = Genre.all
     @posts =  @genre.posts.page(params[:page])
+    
+    if @genre_id.present?
+      @genre = Genre.find_by(id: @genre_id)
+      @users = User.joins(:posts).where(posts: { genre_id: @genre_id }).distinct
+    else
+      @users = User.all
+    end
   end
   
 #検索窓

@@ -2,7 +2,8 @@
 
 // はいけい
 body {
-  background-color: #f8f8ff;
+	background-image: linear-gradient(0deg, transparent 19px, #ccc 20px),linear-gradient(90deg,  transparent 19px, #ccc 20px);
+	background-size: 20px 20px;
 }
 
 .form {
@@ -183,4 +184,15 @@ text-decoration:none;
 	filter:alpha(opacity=50);
     -moz-opacity: 0.5;
     opacity: 0.5;
+}
+
+.fa-map-pin {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  font-size: 25px;
+  transform:rotate(30deg);
+  color: #000;
+  z-index: 5;
+  filter: drop-shadow(1px 1px 2px #555);
 }
