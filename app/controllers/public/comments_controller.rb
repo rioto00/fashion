@@ -7,10 +7,8 @@ class Public::CommentsController < ApplicationController
     @comment.user = current_user
   
     if @comment.save
-      flash[:success] = "コメントが投稿されました"
       redirect_to post_path(@post)
     else
-      flash[:error] = "コメントの投稿に失敗しました"
       @posts = [@post]
       render 'public/posts/show'
     end

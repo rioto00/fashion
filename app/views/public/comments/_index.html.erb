@@ -1,5 +1,5 @@
 <% if post.comments.any? %>
-  <div class="comments">
+  <div class="box1">
     <% post.comments.each do |comment| %>
       <div class="comment mb-3">
         <div class="d-flex align-items-center">
@@ -11,7 +11,7 @@
             <p class="comment-time text-muted"><%= comment.created_at.strftime("%Y/%m/%d") %></p>
           </div>
         </div>
-        <p class="comment-content balloon mb-0"><%= comment.content %></p>
+        <p class="comment-content"><%= comment.content %></p>
       </div>
     <% end %>
   </div>

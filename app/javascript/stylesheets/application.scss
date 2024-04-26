@@ -114,39 +114,6 @@ text-decoration:none;
   border: solid 1px #930403;
 }
 
-// コメントバルーン
-.balloon{
-  position: relative;
-  padding: 20px;
-  background-color: #dcdcdc;
-  border: 2px solid 000;
-  border-radius: 10px;
-}
-.balloon::before{
-  content: '';
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  left: 20px;
-  top: -15px;
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid #000;
-  border-left: 15px solid transparent;
-}
-.balloon::after{
-  content: '';
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  left: 20px;
-  top: -12px;
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid #dcdcdc;
-  border-left: 15px solid transparent;
-}
-
 #name::placeholder,
 #title::placeholder,
 #content::placeholder,
@@ -195,4 +162,11 @@ text-decoration:none;
   color: #000;
   z-index: 5;
   filter: drop-shadow(1px 1px 2px #555);
+}
+
+.box1 {
+  margin: 1em auto;
+  padding: 1em;
+  border:solid 1px #333;
+  background-color: #fff;
 }
