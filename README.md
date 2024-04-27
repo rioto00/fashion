@@ -36,4 +36,8 @@
 - IDE：Cloud9  
 ​
 ## 使用素材
+<<<<<<< HEAD
 - 検討中  
+=======
+- Canva：https://www.canva.com/
+>>>>>>> b753268 (readme)
