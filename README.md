@@ -34,4 +34,4 @@
 - IDE：Cloud9  
 ​
 ## 使用素材
-- 検討中  
+- Canva：https://www.canva.com/
