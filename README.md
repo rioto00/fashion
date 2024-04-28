@@ -1,5 +1,6 @@
-# fashion
-​
+# fashion.com
+​![noimage](https://github.com/rioto00/fashion/assets/156192462/e5e6f0c9-3537-4417-9c69-d177a058d9d2)
+
 ### サイトテーマ
   
  人の着ている服を参考にしたり、評価、価値観の合う人つながるSNSサイト  
@@ -24,7 +25,9 @@
  ・最新のファッショントレンドやブランドの情報、常にファッションの情報を得たいときに利用することができます。
 
 ## 設計書
-​
+
+​![uifollow](https://github.com/rioto00/fashion/assets/156192462/b0bf44b6-c3a0-4920-9af4-9bff4f995ac5)
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL  
