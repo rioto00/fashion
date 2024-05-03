@@ -53,6 +53,11 @@
                     <%= form.submit "保存", class: "button" %>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-12 mt-3">
+                    <%= link_to "いいねした投稿", likes_user_path(current_user), class: "btn btn-primary" %>
+                  </div>
+                </div>
               </div>
             </div>
           <% end %>

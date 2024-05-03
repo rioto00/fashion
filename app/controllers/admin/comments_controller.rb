@@ -3,6 +3,9 @@ class Admin::CommentsController < ApplicationController
   
   def index
     @comments = Comment.all
+    @comments.each do |comment|
+      comment.score = Language.get_data(comment.content)
+    end
   end
 
   def destroy
@@ -20,4 +23,3 @@ class Admin::CommentsController < ApplicationController
     end
   end
 end
-

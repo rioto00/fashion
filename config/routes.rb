@@ -15,21 +15,24 @@ Rails.application.routes.draw do
   end
   
   #ユーザー側
- scope module: :public do
-    root to: "homes#top"
-    get '/about' => "homes#about", as: 'about'
-    get 'user/users/mypage', to: 'users#mypage'
-    resources :users, only: [:show, :edit, :update, :mypage] do
-      resource :relationships, only: [:create, :destroy] do
-        get :followings
-        get :followers
-      end
+scope module: :public do
+  root to: "homes#top"
+  get '/about' => "homes#about", as: 'about'
+  get 'user/users/mypage', to: 'users#mypage'
+  resources :users, only: [:show, :edit, :update, :mypage] do
+    member do
+      get 'likes', to: 'favorites#show'
     end
-    resources :posts, only: [:edit, :update, :new, :create, :show] do
-      resource :favorites, only: [:create, :destroy]
-      resource :comments, only: [:create, :destroy]
+    resource :relationships, only: [:create, :destroy] do
+      get :followings
+      get :followers
     end
   end
+  resources :posts, only: [:edit, :update, :new, :create, :show] do
+    resource :favorites, only: [:create, :destroy]
+    resource :comments, only: [:create, :destroy]
+  end
+end
 
 
   # 管理者側

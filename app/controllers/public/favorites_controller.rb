@@ -1,5 +1,10 @@
 class Public::FavoritesController < ApplicationController
   
+  def show
+    @user = current_user
+    @likes = @user.liked_posts
+  end
+  
   def create
     @post = Post.find(params[:post_id])
     favorite = current_user.favorites.new(post_id: @post.id)

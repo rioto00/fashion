@@ -11,6 +11,7 @@
             <th>ID</th>
             <th>名前</th>
             <th>コメント</th>
+            <th>評価</th>
             <th>投稿日時</th>
             <th></th>
           </tr>
@@ -21,6 +22,15 @@
               <td><%= comment.id %></td>
               <td><%= comment.user.name %></td>
               <td><%= comment.content %></td>
+              <!--<td class="sentiment-score" style="<%# if comment.score.negative? %>color: red;<%# elsif comment.score.positive? %>color: blue;<%# end %>"><%#= comment.score %></td>-->
+              <td class="sentiment-score">
+                <%= comment.score %>
+                <% if comment.score.negative? %>
+                  <span class="red-circle"></span>
+                <% elsif comment.score.positive? %>
+                  <span class="blue-circle"></span>
+                <% end %>
+              </td>
               <td><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
               <td class="text-center">
                 <%= button_to "削除", admin_comment_path(comment), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-danger" %>
