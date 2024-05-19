@@ -15,20 +15,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts 
     @post_new = Post.new
-    if @currentUserEntry && @userEntry
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
-          if cu.room_id == u.room_id
-            @isRoom = true
-          end
-        end
-      end
-    else
-        @room = Room.new
-        @entry = Entry.new
-    end
   end
-
 
   def update
     @user = current_user
